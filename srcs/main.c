@@ -15,39 +15,43 @@ void init()
     ctx.level   = 0;
     ctx.moves = 2;
     ctx.mul = 1;
-    ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
+    // ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
 }
 
 Context *GetContext(){return &ctx;}
+SDLX_Display *display;
+
+void main_loop(void)
+{
+
+	PollInput(ctx.turn, &ctx);
+	if (ctx.turn < 2)
+		RenderButtons();
+	SDLX_RenderQueueDisplay(SDLX_RenderQueueFetch(NULL)[0], display);
+	// SDLX_RenderMessage(ctx.font, SDL_itoa(ctx.level, buff, 10), NULL, &dst);
+	SDL_RenderPresent(display->renderer);
+	SDLX_ResetWindow();
+	funcs[ctx.turn](&ctx);
+	if (ctx.turn == 0)
+		SDL_Delay(250);
+	SDLX_FPSAdjust();
+}
+
 
 int main(void)
 {
-    SDLX_Display *display;
-    SDL_Rect dst;
-    char buff[10];
+	SDL_Rect dst;
+	char buff[10];
 
-    dst.x = 5;
-    dst.y = 5;
-    dst.w = 20;
-    dst.h = 20;
+	dst.x = 5;
+	dst.y = 5;
+	dst.w = 20;
+	dst.h = 20;
 
-    init();
-    display = SDLX_DisplayGet();
-    ctx.display = display;
-    
-    CreateButtons();
-    while(1)
-    {
-        PollInput(ctx.turn, &ctx);
-        if (ctx.turn < 2)
-            RenderButtons();
-        SDLX_RenderQueueDisplay(SDLX_RenderQueueFetch(NULL)[0], display);
-        SDLX_RenderMessage(ctx.font, SDL_itoa(ctx.level, buff, 10), NULL, &dst);
-        SDL_RenderPresent(display->renderer);
-        SDLX_ResetWindow();
-        funcs[ctx.turn](&ctx);
-        if (ctx.turn == 0)
-            SDL_Delay(250);
-        SDLX_FPSAdjust();
-    }
+	init();
+	display = SDLX_DisplayGet();
+	ctx.display = display;
+
+	CreateButtons();
+	emscripten_set_main_loop(main_loop, 0, 1);
 }
