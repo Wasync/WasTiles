@@ -33,7 +33,6 @@ typedef struct Context
     int         order[100];
     Mouse       mouse;
     Button      buttons[25];
-    TTF_Font    *font;
     SDLX_Display*display;
 }               Context;
 
