@@ -1,7 +1,7 @@
 /**
  *  @file:
  *  @author: FlavorlessQuark
- *  Last Modified: 2021-04-02 15:03:09
+ *  Last Modified: 2021-04-02 15:07:27
  *
  * 	IMPORTANT : This library relies on SDL2. It assumes SDL2 lives in the same includes/
  *  folder, in a directory named SDL2.
@@ -17,9 +17,9 @@
 #ifndef SDLX_H
 #define SDLX_H
 
-# include <SDL.h>
-# include <SDL_image.h>
-//# include <SDL_ttf.h>
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
+# include <SDL2/SDL_ttf.h>
 
 # include "SDLX_config.h"
 # include "SDLX_structs.h"
@@ -70,7 +70,7 @@ void			SDLX_RenderQueueAdd(int queue, SDLX_Sprite sprite);
 SDLX_Animator	*SDLX_AnimatorInstantiate(SDLX_Animator *copy, SDLX_Anim **anims, int amount, SDL_Rect *dst);
 SDLX_RenderQueue**SDLX_RenderQueueFetch(int *amount);
 
-void			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
+// void			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
 void			SDLX_RenderQueueDisplay(SDLX_RenderQueue *queue, SDLX_Display *display);
 void			SDLX_ResetWindow(void);
 
