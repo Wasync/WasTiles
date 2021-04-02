@@ -1,4 +1,4 @@
-#include "tile.h"
+#include "../includes/tile.h"
 
 typedef void (*GameFunc)(Context *context);
 static Context ctx;
