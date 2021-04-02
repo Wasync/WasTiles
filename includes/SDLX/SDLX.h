@@ -1,7 +1,7 @@
 /**
  *  @file:
  *  @author: FlavorlessQuark
- *  Last Modified: 2021-04-02 15:22:38
+ *  Last Modified: 2021-04-02 15:28:12
  *
  * 	IMPORTANT : This library relies on SDL2. It assumes SDL2 lives in the same includes/
  *  folder, in a directory named SDL2.
@@ -17,7 +17,8 @@
 #ifndef SDLX_H
 #define SDLX_H
 
-# include "SDL2/SDL.h"
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 // # include "SDL2/SDL_ttf.h"
 
 # include "SDLX_config.h"
