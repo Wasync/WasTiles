@@ -1,7 +1,7 @@
 /**
  *  @file:
  *  @author: FlavorlessQuark
- *  Last Modified: 2021-04-02 15:09:37
+ *  Last Modified: 2021-04-02 15:16:28
  *
  * 	IMPORTANT : This library relies on SDL2. It assumes SDL2 lives in the same includes/
  *  folder, in a directory named SDL2.
@@ -17,8 +17,9 @@
 #ifndef SDLX_H
 #define SDLX_H
 
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
+# include "SDL2/SDL.h"
+// # include "SDL2/SDL_ttf.h"
+
 # include "SDLX_config.h"
 # include "SDLX_structs.h"
 # include "SDLX_input.h"
@@ -40,20 +41,15 @@
 # endif
 
 /**
- * @brief initializes SDLX and creates a display. Should be called once at program start
+ * @brief initializes SDLX and creates a display
  */
-void			SDLX_Start();
+void	SDLX_Start(char *name, int x, int y, int h, int w, int flags);
 /**
  * @brief reset or sets the display
  */
-void			SDLX_DisplaySet(void);
+void			SDLX_DisplaySet(char *name, int x, int y, int h, int w, int flags);
 void			SDLX_BackgroundSet(SDL_Texture *bg);
 SDLX_Display	*SDLX_DisplayGet(void);
-
-/**
-* @brief Legacy function to clear screen, use SDLX_ResetWindow instead
- */
-void			SDLX_screen_reset(SDL_Renderer *renderer, SDL_Color *bg_color);
 
 void			SDLX_AnimationUpdate(void);
 void			SDLX_RenderQueueAdd(int queue, SDLX_Sprite sprite);
@@ -68,7 +64,7 @@ void			SDLX_RenderQueueAdd(int queue, SDLX_Sprite sprite);
 SDLX_Animator	*SDLX_AnimatorInstantiate(SDLX_Animator *copy, SDLX_Anim **anims, int amount, SDL_Rect *dst);
 SDLX_RenderQueue**SDLX_RenderQueueFetch(int *amount);
 
-// void			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
+void			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
 void			SDLX_RenderQueueDisplay(SDLX_RenderQueue *queue, SDLX_Display *display);
 void			SDLX_ResetWindow(void);
 
@@ -92,4 +88,3 @@ void			SDLX_FPSAdjust(void);
 SDLX_Anim		*SDLX_AnimLoad(SDL_Texture *tex, int cycle, int cell_w, int cell_h, SDL_bool loop, int x_off, int y_off);
 
 #endif
-
