@@ -6,7 +6,6 @@ void CreateButtons()
 {
     SDL_Rect rect;
     Context  *ctx;
-    int check;
     int       i;
     int       n;
 
