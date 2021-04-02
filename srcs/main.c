@@ -6,7 +6,7 @@ GameFunc funcs[4];
 
 void init()
 {
-    SDLX_Start();
+    SDLX_Start("tiles", WIN_X, WIN_Y, WIN_H, WIN_W, SDL_INIT_EVERYTHING);
     funcs[0] = ComputerTurn;
     funcs[1] = PlayerTurn;
     funcs[2] = WinScreen;
@@ -40,13 +40,6 @@ void main_loop(void)
 
 int main(void)
 {
-	SDL_Rect dst;
-	char buff[10];
-
-	dst.x = 5;
-	dst.y = 5;
-	dst.w = 20;
-	dst.h = 20;
 
 	init();
 	display = SDLX_DisplayGet();

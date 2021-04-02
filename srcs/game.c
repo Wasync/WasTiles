@@ -3,7 +3,6 @@
 void PollInput(int turn, Context *ctx)
 {
     SDL_Event event;
-    int x, y;
 
     ctx->mouse.click  = 0;
     while(SDL_PollEvent(&event))
@@ -94,7 +93,6 @@ void WinScreen(Context *ctx)
 void LoseScreen(Context *ctx)
 {
     SDL_Rect dst;
-    char buff[10];
 
     dst.x = 10;
     dst.y = WIN_H / 3;
