@@ -19,7 +19,7 @@
 
 # include <SDL.h>
 # include <SDL_image.h>
-# include <SDL_ttf.h>
+//# include <SDL_ttf.h>
 
 # include "SDLX_config.h"
 # include "SDLX_structs.h"

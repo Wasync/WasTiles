@@ -1,4 +1,4 @@
-#include "tile.h"
+#include "../includes/tile.h"
 
 static SDLX_Anim *colors;
 
