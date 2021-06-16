@@ -7,6 +7,7 @@ GameFunc funcs[4];
 
 void init()
 {
+	TTF_Init();
     SDLX_Start("tiles", WIN_X, WIN_Y, WIN_H, WIN_W, SDL_INIT_EVERYTHING);
     funcs[0] = ComputerTurn;
     funcs[1] = PlayerTurn;
@@ -16,7 +17,9 @@ void init()
     ctx.level   = 0;
     ctx.moves = 2;
     ctx.mul = 1;
-    ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
+	ctx.font = NULL;
+	if (TTF_WasInit)
+		ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
 	if (!ctx.font)
 		SDL_Log("Could not load font\n");
 }
