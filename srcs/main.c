@@ -18,8 +18,7 @@ void init()
     ctx.moves = 2;
     ctx.mul = 1;
 	ctx.font = NULL;
-	if (TTF_WasInit)
-		ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
+	ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
 	if (!ctx.font)
 		SDL_Log("Could not load font\n");
 }

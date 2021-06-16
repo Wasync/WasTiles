@@ -195,7 +195,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/Assets/Pixel_Font.ttf", "start": 0, "end": 70324, "audio": 0}, {"filename": "/Assets/buttons.png", "start": 70324, "end": 73195, "audio": 0}], "remote_package_size": 73195, "package_uuid": "d377ae60-bc6b-4e21-8cd1-38da3a1056d5"});
+   loadPackage({"files": [{"filename": "/Assets/Pixel_Font.ttf", "start": 0, "end": 70324, "audio": 0}, {"filename": "/Assets/buttons.png", "start": 70324, "end": 73195, "audio": 0}], "remote_package_size": 73195, "package_uuid": "c1209ca6-7cc0-49d7-a4fa-1ba601db5ee2"});
   
   })();
   
@@ -6042,6 +6042,20 @@ var ASM_CONSTS = {
         }
         return null;
       }};
+  function _TTF_Init() {
+      // OffscreenCanvas 2D is faster than Canvas for text operations, so we use
+      // it if it's available.
+      try {
+        var offscreenCanvas = new OffscreenCanvas(0, 0);
+        SDL.ttfContext = offscreenCanvas.getContext('2d');
+      } catch (ex) {
+        var canvas = document.createElement('canvas');
+        SDL.ttfContext = canvas.getContext('2d');
+      }
+  
+      return 0;
+    }
+
   function _TTF_OpenFont(filename, size) {
       filename = PATH.normalize(UTF8ToString(filename));
       var id = SDL.fonts.length;
@@ -9822,6 +9836,7 @@ function intArrayToString(array) {
 
 
 var asmLibraryArg = {
+  "TTF_Init": _TTF_Init,
   "TTF_OpenFont": _TTF_OpenFont,
   "TTF_RenderText_Solid": _TTF_RenderText_Solid,
   "__sys_fcntl64": ___sys_fcntl64,
