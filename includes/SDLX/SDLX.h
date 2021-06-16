@@ -64,6 +64,7 @@ void			SDLX_RenderQueueAdd(int queue, SDLX_Sprite sprite);
  */
 SDLX_Animator	*SDLX_AnimatorInstantiate(SDLX_Animator *copy, SDLX_Anim **anims, int amount, SDL_Rect *dst);
 SDLX_RenderQueue**SDLX_RenderQueueFetch(int *amount);
+void 			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
 
 // void			SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst);
 void			SDLX_RenderQueueDisplay(SDLX_RenderQueue *queue, SDLX_Display *display);

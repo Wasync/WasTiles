@@ -17,7 +17,12 @@ void CreateButtons()
         SDL_Surface *surf;
 
         surf = IMG_Load("Assets/buttons.png");
+		if (!surf)
+			SDL_Log("Could not load png\n");
+
         tex = SDL_CreateTextureFromSurface(ctx->display->renderer, surf);
+		if (!tex)
+			SDL_Log("Could not create texture\n");
         colors = SDLX_AnimLoad(tex, 5, 300, 300, SDL_FALSE, 0, 0);
     }
     ctx->mul++;
@@ -44,7 +49,7 @@ void CreateButtons()
         rect.y += rect.h;
         i++;
     }
-
+	SDL_Log("Buttons created\n");
 }
 
 void RenderButtons()

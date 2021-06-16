@@ -12,20 +12,20 @@ void	SDLX_ResetWindow(void)
 		SDL_RenderCopy(display->renderer, display->background, NULL, NULL);
 }
 
-// void SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst)
-// {
-// 	SDL_Surface *message;
-// 	SDLX_Display *display;
+void SDLX_RenderMessage(TTF_Font *font, char *msg, const SDL_Rect *src, const SDL_Rect *dst)
+{
+	SDL_Surface *message;
+	SDLX_Display *display;
 
-// 	display = SDLX_DisplayGet();
-// 	message = TTF_RenderText_Solid(font,
-// 						msg,
-// 						(SDL_Color){255, 255, 255, 255});
-// 	SDL_RenderCopy(display->renderer,
-// 					SDL_CreateTextureFromSurface(display->renderer, message),
-// 					src, dst);
-// 	SDL_FreeSurface(message);
-// }
+	display = SDLX_DisplayGet();
+	message = TTF_RenderText_Solid(font,
+						msg,
+						(SDL_Color){255, 255, 255, 255});
+	SDL_RenderCopy(display->renderer,
+					SDL_CreateTextureFromSurface(display->renderer, message),
+					src, dst);
+	SDL_FreeSurface(message);
+}
 
 // This as a template display. User is free to create their own renderQ displayer
 // this one just puts everything on the screen starting from the lowest Queue (assumed to be the background queue)

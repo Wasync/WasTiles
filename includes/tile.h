@@ -2,6 +2,7 @@
 # define TILE_H
 
 #include "SDLX/SDLX.h"
+#include "SDL2/SDL_ttf.h"
 #include <emscripten.h>
 
 #define MAX_MOVES 25
@@ -33,6 +34,7 @@ typedef struct Context
     int         order[100];
     Mouse       mouse;
     Button      buttons[25];
+	TTF_Font   *font;
     SDLX_Display*display;
 }               Context;
 
