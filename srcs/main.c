@@ -8,6 +8,8 @@ GameFunc funcs[4];
 void init()
 {
 	// TTF_Init();
+	SDL_Surface *surf;
+	SDL_Texture *tex;
     SDLX_Start("tiles", WIN_X, WIN_Y, WIN_H, WIN_W, SDL_INIT_EVERYTHING);
     funcs[0] = ComputerTurn;
     funcs[1] = PlayerTurn;
@@ -18,9 +20,13 @@ void init()
     ctx.moves = 2;
     ctx.mul = 1;
 	ctx.font = NULL;
-	// ctx.font = TTF_OpenFont("Assets/Pixel_Font.ttf", 14);
-	// if (!ctx.font)
-	// 	SDL_Log("Could not load font\n");
+
+	surf = IMG_Load("Assets/GameOver.PNG");
+	ctx.gameover = SDL_CreateTextureFromSurface(ctx.display->renderer, surf);
+
+	surf = IMG_Load("Assets/GameWin.PNG");
+	ctx.gamewin = SDL_CreateTextureFromSurface(ctx.display->renderer, surf);
+
 }
 
 Context *GetContext(){return &ctx;}
@@ -33,13 +39,15 @@ void main_loop(void)
 	if (ctx.turn < 2)
 		RenderButtons();
 	SDLX_RenderQueueDisplay(SDLX_RenderQueueFetch(NULL)[0], display);
-	// if (ctx.font)
-	// 	SDLX_RenderMessage(ctx.font, SDL_itoa(ctx.level, buff, 10), NULL, &dst);
+	if (ctx.font)
+		SDLX_RenderMessage(ctx.font, SDL_itoa(ctx.level, buff, 10), NULL, &dst);
 	SDL_RenderPresent(display->renderer);
 	SDLX_ResetWindow();
 	funcs[ctx.turn](&ctx);
 	if (ctx.turn == 0)
 		SDL_Delay(250);
+	else
+		SDL_Delay(50);
 	SDLX_FPSAdjust();
 }
 

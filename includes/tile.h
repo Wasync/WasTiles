@@ -35,6 +35,8 @@ typedef struct Context
     Mouse       mouse;
     Button      buttons[25];
 	TTF_Font   *font;
+	SDL_Texture *gameover;
+	SDL_Texture *gamewin;
     SDLX_Display*display;
 }               Context;
 

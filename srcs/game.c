@@ -85,8 +85,7 @@ void WinScreen(Context *ctx)
     dst.y = 0;
     dst.w = WIN_W;
     dst.h = WIN_H;
-	// if (ctx->font)
-	// 	SDLX_RenderMessage(ctx->font, "You have passed all 15 levels",NULL, &dst);
+	SDL_RenderCopy(ctx->display->renderer, ctx->gamewin, NULL, NULL);
     if (ctx->mouse.click)
         ctx->turn = 0;
 }
@@ -99,8 +98,8 @@ void LoseScreen(Context *ctx)
     dst.y = WIN_H / 3;
     dst.w = WIN_W - 20;
     dst.h = WIN_H / 3;
-	// if (ctx->font)
-	// 	SDLX_RenderMessage(ctx->font, "Game Over",NULL, &dst);
+
+	SDL_RenderCopy(ctx->display->renderer, ctx->gameover, NULL, NULL);
     if (ctx->mouse.click)
     {
         ctx->turn = 0;

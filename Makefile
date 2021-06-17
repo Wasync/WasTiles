@@ -26,7 +26,7 @@ OBJS = $(addprefix $(BIN_DIR), $(SRCS:.c=.o))
 all: $(NAME)
 
 web:
-	emcc -I includes/ -I includes/SDLX/ -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file Assets/ srcs/*.c srcs/SDLX/*.c -o tiles.html
+	emcc -I includes/ -I includes/SDLX/ -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]'  --preload-file Assets/ srcs/*.c srcs/SDLX/*.c -o tiles.html
 
 $(NAME): $(BIN_DIR) $(OBJS)
 	gcc $(FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBRARIES) -L -l $(STATIC_LIB)
